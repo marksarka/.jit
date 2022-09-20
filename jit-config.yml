@@ -1,0 +1,6 @@
+applications:
+- application_name: https://public-firing-range.appspot.com/
+  authentication_mode: non-authenticated
+  exclude_paths: []
+  target_url: https://public-firing-range.appspot.com/
+  type: web
