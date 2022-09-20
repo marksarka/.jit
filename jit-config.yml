@@ -4,3 +4,9 @@ applications:
   exclude_paths: []
   target_url: https://public-firing-range.appspot.com/
   type: web
+- api_domain: api.example.com
+  application_name: http://www.jit.io
+  authentication_mode: non-authenticated
+  exclude_paths: []
+  target_url: http://www.jit.io
+  type: api
