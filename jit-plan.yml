@@ -8,6 +8,11 @@ references:
   - https://www.jit.io
 tags: []
 items:
+  - name: Scan code for vulnerabilities
+    uses: >-
+      jitsecurity-controls/jit-plans/items/code/item-code-vulnerability.yml@latest
+  - name: Scan code dependencies for vulnerabilities
+    uses: jitsecurity-controls/jit-plans/items/code/item-dependency-check.yml@latest
   - name: Scan IaC for static misconfigurations
     uses: >-
       jitsecurity-controls/jit-plans/items/infrastructure/item-iac-misconfiguration-detection.yml@latest
@@ -17,10 +22,3 @@ items:
   - name: Run a web application scanner
     uses: >-
       jitsecurity-controls/jit-plans/items/runtime/item-web-app-scanner.yml@latest
-  - name: Scan code for hard-coded secrets
-    uses: jitsecurity-controls/jit-plans/items/code/item-secret-detection.yml@latest
-  - name: Scan code dependencies for vulnerabilities
-    uses: jitsecurity-controls/jit-plans/items/code/item-dependency-check.yml@latest
-  - name: Scan code for vulnerabilities
-    uses: >-
-      jitsecurity-controls/jit-plans/items/code/item-code-vulnerability.yml@latest
