@@ -8,8 +8,6 @@ references:
   - https://www.jit.io
 tags: []
 items:
-  - name: Scan code dependencies for vulnerabilities
-    uses: jitsecurity-controls/jit-plans/items/code/item-dependency-check.yml@latest
   - name: Scan IaC for static misconfigurations
     uses: >-
       jitsecurity-controls/jit-plans/items/infrastructure/item-iac-misconfiguration-detection.yml@latest
