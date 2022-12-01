@@ -10,3 +10,10 @@ applications:
   exclude_paths: []
   target_url: http://www.jit.io
   type: api
+aws:
+- account_id: 002393878716
+  account_name: 'Aviram Shmueli '
+  deploy_region: us-east-1
+  regions:
+  - us-east-1
+  type: account
