@@ -6,34 +6,6 @@ on:
           description: The Client payload
           required: true
 jobs:
-  iac-misconfig-detection:
-    if: contains( fromJSON(github.event.inputs.client_payload).payload.control_ids, 'd75b6a09-a4cd-4944-903e-7cf78ae7065b') || fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'iac-misconfig-detection'
-    runs-on: ubuntu-latest
-    steps:
-    - name: cloud-infrastructure-misconfiguration
-      uses: jitsecurity-controls/jit-github-action@v1.6
-      with:
-        docker_user: jit-bot
-        docker_password: ${{fromJSON(github.event.inputs.client_payload).payload.container_registry_token}}
-        security_control: ghcr.io/jitsecurity-controls/control-kics-alpine:latest
-        security_control_args: 
-        security_control_output_file: /code/jit-report/results.json
-        dispatch_type: workflow
-
-  remediation-pr:
-    if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'remediation-pr'
-    runs-on: ubuntu-latest
-    steps:
-    - name: remediation-pr
-      uses: jitsecurity-controls/jit-github-action@v1.6
-      with:
-        docker_user: jit-bot
-        docker_password: ${{fromJSON(github.event.inputs.client_payload).payload.container_registry_token}}
-        security_control: ghcr.io/jitsecurity-controls/open-remediation-pr-alpine:latest
-        security_control_args: --github-token ${{fromJSON(github.event.inputs.client_payload).payload.github_token}} --fix-pr-config ${{fromJSON(github.event.inputs.client_payload).payload.fix_pr_config}}
-        
-        dispatch_type: workflow
-
   static-code-analysis-python:
     if: contains( fromJSON(github.event.inputs.client_payload).payload.control_ids, '1453f8c6-88a5-42ea-a8d9-714c82da0b62') || fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-python'
     runs-on: ubuntu-latest
@@ -143,5 +115,33 @@ jobs:
         docker_password: ${{fromJSON(github.event.inputs.client_payload).payload.container_registry_token}}
         security_control: ghcr.io/jitsecurity-controls/control-trivy-alpine:latest
         security_control_args: --quiet config --severity HIGH,CRITICAL -f json --ignorefile /opt/.trivyignore /code
+        
+        dispatch_type: workflow
+
+  iac-misconfig-detection:
+    if: contains( fromJSON(github.event.inputs.client_payload).payload.control_ids, 'd75b6a09-a4cd-4944-903e-7cf78ae7065b') || fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'iac-misconfig-detection'
+    runs-on: ubuntu-latest
+    steps:
+    - name: cloud-infrastructure-misconfiguration
+      uses: jitsecurity-controls/jit-github-action@v1.6
+      with:
+        docker_user: jit-bot
+        docker_password: ${{fromJSON(github.event.inputs.client_payload).payload.container_registry_token}}
+        security_control: ghcr.io/jitsecurity-controls/control-kics-alpine:latest
+        security_control_args: 
+        security_control_output_file: /code/jit-report/results.json
+        dispatch_type: workflow
+
+  remediation-pr:
+    if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'remediation-pr'
+    runs-on: ubuntu-latest
+    steps:
+    - name: remediation-pr
+      uses: jitsecurity-controls/jit-github-action@v1.6
+      with:
+        docker_user: jit-bot
+        docker_password: ${{fromJSON(github.event.inputs.client_payload).payload.container_registry_token}}
+        security_control: ghcr.io/jitsecurity-controls/open-remediation-pr-alpine:latest
+        security_control_args: --github-token ${{fromJSON(github.event.inputs.client_payload).payload.github_token}} --fix-pr-config ${{fromJSON(github.event.inputs.client_payload).payload.fix_pr_config}}
         
         dispatch_type: workflow
