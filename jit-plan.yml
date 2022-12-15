@@ -21,9 +21,9 @@ items:
       jitsecurity-controls/jit-plans/items/infrastructure/item-container-scan.yml@latest
   - name: Scan your code dependencies for vulnerabilities (SCA)
     uses: jitsecurity-controls/jit-plans/items/code/item-dependency-check.yml@latest
-  - name: Verify that the users of your AWS accounts have enabled MFA
+  - name: Scan your infrastructure-as-code (IaC) for misconfigurations
     uses: >-
-      jitsecurity-controls/jit-plans/items/infrastructure/item-mfa-cloud-providers.yml@latest
+      jitsecurity-controls/jit-plans/items/infrastructure/item-iac-misconfiguration-detection.yml@latest
   - name: Require MFA for SCM
     uses: >-
       jitsecurity-controls/jit-plans/items/third_party_app/item-mfa-scm.yml@latest
@@ -35,6 +35,3 @@ items:
   - name: Run a web application scanner
     uses: >-
       jitsecurity-controls/jit-plans/items/runtime/item-web-app-scanner.yml@latest
-  - name: Scan your infrastructure-as-code (IaC) for misconfigurations
-    uses: >-
-      jitsecurity-controls/jit-plans/items/infrastructure/item-iac-misconfiguration-detection.yml@latest
