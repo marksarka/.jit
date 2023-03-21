@@ -1,0 +1,21 @@
+applications:
+- application_name: https://public-firing-range.appspot.com/
+  authentication_mode: non-authenticated
+  exclude_paths: []
+  target_url: https://public-firing-range.appspot.com/
+  type: web
+- api_domain: api.example.com
+  application_name: http://www.jit.io
+  authentication_mode: non-authenticated
+  exclude_paths: []
+  target_url: http://www.jit.io
+  type: api
+aws:
+- account_id: 002393878716
+  regions:
+  - us-east-1
+  type: account
+github_branch_protection:
+  organization:
+    amount_of_required_reviews: 2
+    required_status_checks: []
