@@ -10,11 +10,6 @@ applications:
   exclude_paths: []
   target_url: http://www.jit.io
   type: api
-aws:
-- account_id: 002393878716
-  regions:
-  - us-east-1
-  type: account
 github_branch_protection:
   organization:
     amount_of_required_reviews: 2
