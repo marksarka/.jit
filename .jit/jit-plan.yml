@@ -43,3 +43,12 @@ items:
     uses: >-
       jitsecurity-controls/jit-plans/items/infrastructure/item-cloud-security-posture-management.yml@latest
 
+override:
+  workflows:
+    secret-detection:
+      jobs:
+        secret-detection:
+          enabled: false
+        secret-detection-trufflehog:
+          enabled: true
+          
