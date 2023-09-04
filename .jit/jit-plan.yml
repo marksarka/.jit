@@ -8,40 +8,25 @@ references:
   - https://www.jit.io
 tags: []
 items:
-  - name: Verify that Github Branch Protection is properly configured
-    uses: >-
-      jitsecurity-controls/jit-plans/items/third_party_app/item-branch-protection-scm.yml@latest
   - name: Scan your code for vulnerabilities (SAST)
     uses: >-
       jitsecurity-controls/jit-plans/items/code/item-code-vulnerability.yml@latest
-  - name: Scan container images
+  - name: Scan your Dockerfiles for vulnerabilities
     uses: >-
       jitsecurity-controls/jit-plans/items/infrastructure/item-container-scan.yml@latest
   - name: Scan your code dependencies for vulnerabilities (SCA)
     uses: jitsecurity-controls/jit-plans/items/code/item-dependency-check.yml@latest
-  - name: Detect GitHub misconfigurations
-    uses: >-
-      jitsecurity-controls/jit-plans/items/third_party_app/item-github-misconfiguration.yml@latest
-  - name: Scan Kubernetes configuration files
-    uses: >-
-      jitsecurity-controls/jit-plans/items/infrastructure/item-iac-kubernetes.yml@latest
   - name: Scan your infrastructure-as-code (IaC) for misconfigurations
     uses: >-
       jitsecurity-controls/jit-plans/items/infrastructure/item-iac-misconfiguration-detection.yml@latest
   - name: Verify that the users of your AWS accounts have enabled MFA
     uses: >-
       jitsecurity-controls/jit-plans/items/infrastructure/item-mfa-cloud-providers.yml@latest
-  - name: Require MFA for SCM
-    uses: >-
-      jitsecurity-controls/jit-plans/items/third_party_app/item-mfa-scm.yml@latest
-  - name: Scan infrastructure for runtime misconfigurations
-    uses: >-
-      jitsecurity-controls/jit-plans/items/infrastructure/item-runtime-misconfiguration-detection.yml@latest
   - name: Scan code for hard-coded secrets
     uses: jitsecurity-controls/jit-plans/items/code/item-secret-detection.yml@latest
-  - name: Import Cloud Security Posture Management results
+  - name: Verify that MFA for your GitHub organization is enabled
     uses: >-
-      jitsecurity-controls/jit-plans/items/infrastructure/item-cloud-security-posture-management.yml@latest
+      jitsecurity-controls/jit-plans/items/third_party_app/item-mfa-scm.yml@latest
 override:
   workflows:
     secret-detection:
@@ -57,4 +42,3 @@ override:
                 args: filesystem ${WORK_DIR:-.} --json --only-verified
                 env:
                   SECURITY_CONTROL_OUTPUT_FILE: /tmp/final-findings.json
-          
